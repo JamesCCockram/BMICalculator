@@ -12,20 +12,25 @@ CenterX = display.contentCenterX
 CenterY = display.contentCenterY
 
 --Text
-local Title = display.newText("My Fitness Pal", CenterX, 0, native.systemFontBold, 24)
+local Title = display.newText("My Fitness Pal", CenterX, 10, native.systemFontBold, 42)
+local yourData = display.newText("Your Data", CenterX, 70, native.systemFontBold, 24)
 local BMITitle = display.newText("Your BMI", CenterX, 300, native.systemFontBold, 36)
 local BMIOutput = display.newText("", CenterX, 400, native.systemFontBold, 24)
+local titleHeight = display.newText("Weight:", 70, 190, native.systemFontBold, 20)
+local titleWeight = display.newText("Height:", 70, 130, native.systemFontBold, 20)
 
 --Text Box
-local txtBxHeight = native.newTextField(100, CenterY, 100, 40)
+local txtBxHeight = native.newTextField(210, 130, 150, 40)
 
 txtBxHeight.font = native.newFont(systemFontBold, 24)
 txtBxHeight:resizeHeightToFitFont()
+txtBxHeight.placeholder = "Height (M)"
 
-local txtBxWeight = native.newTextField(200, CenterY, 100, 40)
+local txtBxWeight = native.newTextField(210, 190, 150, 40)
 
 txtBxWeight.font = native.newFont(systemFontBold, 24)
 txtBxWeight:resizeHeightToFitFont()
+txtBxWeight.placeholder = "Weight (KG)"
 
 
 --Touch Listener
@@ -35,7 +40,8 @@ local function handleButtonEvent( event )
 		height = txtBxHeight.text 	
 		weight = txtBxWeight.text
 	if event.target.name == "calculate" then
-		BMIOutput.text = weight/height/height * 10000
+		BMIOutput.text = weight/height/height
+		print(BMIOutput)
 end
 end
 end
@@ -55,5 +61,5 @@ local btnCalculate = widget.newButton(
 	strokeWidth = 4
 })
 btnCalculate.name = "calculate"
-btnCalculate.x = 100
-
+btnCalculate.x = CenterX
+btnCalculate.y = 300
