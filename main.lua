@@ -15,10 +15,13 @@ CenterY = display.contentCenterY
 local Title = display.newText("My Fitness Pal", CenterX, 10, native.systemFontBold, 42)
 local yourData = display.newText("Your Data", CenterX, 70, native.systemFontBold, 24)
 local BMITitle = display.newText("Your BMI", CenterX, 340, native.systemFontBold, 36)
-local BMIOutputNumber = display.newText("", CenterX, 400, native.systemFontBold, 30)
-local BMIOutputText = display.newText("", CenterX, 450, native.systemFontBold, 28)
+local BMIOutputNumber = display.newText("BMI", CenterX, 400, native.systemFontBold, 30)
+local BMIOutputText = display.newText("Category", CenterX, 450, native.systemFontBold, 28)
 local titleHeight = display.newText("Weight:", 70, 190, native.systemFontBold, 20)
 local titleWeight = display.newText("Height:", 70, 130, native.systemFontBold, 20)
+
+BMIOutputNumber:setFillColor(1,1,1 , 0.5)
+BMIOutputText:setFillColor(1,1,1, 0.5)
 
 --Text Box
 local txtBxHeight = native.newTextField(210, 130, 150, 40)
@@ -29,9 +32,12 @@ txtBxHeight.placeholder = "Height (M)"
 
 local txtBxWeight = native.newTextField(210, 190, 150, 40)
 
+txtBxWeight.inputType = "number"
+
 txtBxWeight.font = native.newFont(systemFontBold, 24)
 txtBxWeight:resizeHeightToFitFont()
 txtBxWeight.placeholder = "Weight (KG)"
+
 
 
 --Touch Listener
