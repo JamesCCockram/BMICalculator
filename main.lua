@@ -40,8 +40,16 @@ local function handleButtonEvent( event )
 		height = txtBxHeight.text 	
 		weight = txtBxWeight.text
 	if event.target.name == "calculate" then
-		BMIOutput.text = weight/height/height
-		print(BMIOutput)
+		BMI = weight/height/height
+		print(BMI)
+
+	if BMI <18 then
+		BMIOutput.text = ("Underweight")
+	elseif BMI <25 then
+		BMIOutput.text = ("Normal")
+	elseif BMI <30 then
+		BMIOutput.text = ("Overweight")
+	end
 end
 end
 end
