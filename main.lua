@@ -14,8 +14,9 @@ CenterY = display.contentCenterY
 --Text
 local Title = display.newText("My Fitness Pal", CenterX, 10, native.systemFontBold, 42)
 local yourData = display.newText("Your Data", CenterX, 70, native.systemFontBold, 24)
-local BMITitle = display.newText("Your BMI", CenterX, 300, native.systemFontBold, 36)
-local BMIOutput = display.newText("", CenterX, 400, native.systemFontBold, 24)
+local BMITitle = display.newText("Your BMI", CenterX, 340, native.systemFontBold, 36)
+local BMIOutputNumber = display.newText("", CenterX, 400, native.systemFontBold, 30)
+local BMIOutputText = display.newText("", CenterX, 450, native.systemFontBold, 28)
 local titleHeight = display.newText("Weight:", 70, 190, native.systemFontBold, 20)
 local titleWeight = display.newText("Height:", 70, 130, native.systemFontBold, 20)
 
@@ -41,14 +42,24 @@ local function handleButtonEvent( event )
 		weight = txtBxWeight.text
 	if event.target.name == "calculate" then
 		BMI = weight/height/height
-		print(BMI)
+		BMI = math.round(BMI)
 
 	if BMI <18 then
-		BMIOutput.text = ("Underweight")
+		BMIOutputText.text = ("Underweight")
+		BMIOutputText:setTextColor(0,0,1)
+		BMIOutputNumber.text = (BMI)
 	elseif BMI <25 then
-		BMIOutput.text = ("Normal")
+		BMIOutputText.text = ("Normal")
+		BMIOutputText:setTextColor(0,1,0)
+		BMIOutputNumber.text = (BMI)
 	elseif BMI <30 then
-		BMIOutput.text = ("Overweight")
+		BMIOutputText.text = ("Overweight")
+		BMIOutputText:setTextColor(1,1,0)
+		BMIOutputNumber.text = (BMI)
+	else
+		BMIOutputText.text = ("Obese")
+		BMIOutputText:setTextColor(1,0,0)
+		BMIOutputNumber.text = (BMI)
 	end
 end
 end
@@ -70,4 +81,4 @@ local btnCalculate = widget.newButton(
 })
 btnCalculate.name = "calculate"
 btnCalculate.x = CenterX
-btnCalculate.y = 300
+btnCalculate.y = 250
